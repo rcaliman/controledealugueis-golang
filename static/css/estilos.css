@@ -1,0 +1,51 @@
+:root {
+    --branco: #fff;
+    --cinza: #dee2e6;
+    --verde: #2f8754;
+    --botao1: #b10006;
+    --botao2: #082fdf;
+    --botao3: #296671;
+    --botao4: #9100a2;
+    --botao5: #494454;
+    --botao6: #332c49;
+    --paleta0: #fbfcfb;
+    --paleta1: #fafbfa;
+    --paleta2: #f9faf9;
+    --paleta3: #f7f9f8;
+    --paleta4: #e1e7e4;
+    --paleta5: #aea9ba;
+    --paleta6: #4b4851;
+    --paleta7: #212529;
+}
+
+div.row{padding-bottom: 1.2em;}
+div.row.right{display: flex; justify-content: end; padding: 20px}
+input.btn.btn-dark{width: 100%;}
+form div {
+    background-color: var(--branco);
+    padding: 10px 20px 10px 20px;
+    border-top: 1px solid var(--cinza);
+    border-left: none;
+    border-right: none;
+}
+form input {background-color: var(--paleta1) !important;
+    border-radius:0 !important; color: var(--paleta6) !important; border: 1px solid var(--cinza) !important;}
+form select {background-color: var(--paleta0) !important;
+    border-radius:0 !important; color: var(--paleta5) !important; border: 1px solid var(--cinza) !important;}
+form label {color: var(--paleta5); font-weight: bold;}
+#selectMeses {color: var(--branco) !important; background-color: var(--botao2) !important; }
+#selectAnos {color: var(--branco) !important; background-color: var(--botao3) !important;}
+td {vertical-align: middle !important;}
+td a{color: grey}
+td a:hover{color: var(--verde); text-decoration: none}
+.btn-navegate {border-radius: 0}
+.btn-dark {width: 100%;}
+.btn-formulario {
+    color: var(--paleta6);
+    background-color: transparent;
+    background-image: none;
+    border-color: var(--paleta6);
+    border-radius: 0;
+}
+form.tabela div {background-color: #fff; padding: 0px 0px 0px 0px; border: 0;}
+tr.change_on_over:hover td { background:#EDEDED; !important;}

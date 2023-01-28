@@ -1,0 +1,45 @@
+{{ define "views/form_cliente.html" }}
+    {{ template "layouts/header.html" }}
+    <body>
+    <div class="container mt-2">
+        {{ template "layouts/navegacao.html" }}
+        <form class="form-floating" method="post" action="clientes" id="form_cliente">
+            <div class="row right" style="background-color: var(--paleta7);">
+                <h4 style="color: var(--cinza)">Formulário de Clientes</h4>
+            </div>
+            <input class="form-control" type="hidden" name="id" value="{{ .cliente.ID }}">
+            <div class="row">
+                <label for="nome" class="form-label">Nome:</label>
+                <input class="form-control" id="nome" type="text" name="nome" value="{{ .cliente.Nome }}">
+            </div>
+            <div class="row">
+                <label for="data_nascimento" class="form-label">Data de Nascimento:</label>
+                <input class="form-control" id="data_nascimento" type="date" name="data_nascimento"
+                       value="{{ if .cliente.DataNascimento }}{{.cliente.DataNascimento | formataDataUS}}{{ end }}">
+            </div>
+            <div class="row">
+                <label for="ci" class="form-label">Comprovante de Identidade:</label>
+                <input class="form-control" id="ci" type="text" name="ci" value="{{ .cliente.CI }}">
+            </div>
+            <div class="row">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input class="form-control" id="cpf" type="text" name="cpf" value="{{ .cliente.CPF }}">
+            </div>
+            <div class="row">
+                <label for="telefone_1" class="form-label">Telefone:</label>
+                <input class="form-control" id="telefone_1" type="text" name="telefone_1"
+                       value="{{ .cliente.Telefone1 }}">
+            </div>
+            <div class="row">
+                <label for="telefone_2" class="form-label">Telefone:</label>
+                <input class="form-control" id="telefone_2" type="text" name="telefone_2"
+                       value="{{ .cliente.Telefone2 }}">
+            </div>
+            <div class="row right" style="background-color: var(--cinza)">
+                <button class="btn btn-formulario" type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+    </body>
+    {{ template "layouts/footer.html" }}
+{{ end }}

@@ -1,0 +1,65 @@
+{{ define "views/recibos.html" }}
+    {{ template "layouts/header.html" }}
+
+    <body>
+    <div class="container mt-2">
+        <body>
+        <script src=" https://cdn.jsdelivr.net/npm/extenso@2.0.1/dist/extenso.min.js "></script>
+        {{ range .imoveis }}
+            <div id="recibo{{.ID}}">
+                <div style="font-family: 'Droid Sans Mono';font-size: 1.5em;">
+                    <div style="text-align: center;">
+                        <h2 style="padding-top:0.5em; font-width: bold; text-decoration: underline">
+                            RECIBO
+                        </h2>
+                    </div>
+                    <p>Recebi de <span style="font-weight: bold; text-decoration: underline">{{.Cliente.Nome}}</span> a importancia de
+                        *$* <span id="valorExtenso{{.ID}}"></span> *$*
+                        referente ao aluguel do(a) {{.Tipo}}  numero {{.Numero}}.
+                    </p>
+                    <div style="display: flex; justify-content: end; padding: 20px 0px 20px 0px">
+                        <p style="padding-top: 1em">Colatina, {{.DiaBase}} de <span class="dataPagamento"></span></p>
+                    </div>
+                    <div style="display: flex; justify-content: center; padding: 20px 0px 20px 0px; text-align: center;">
+                        ___________________________________________________
+                    </div>
+                    <div style="text-align: center;">
+                        Darci Francisco Caliman<br>proprietário
+                    </div>
+                    <div style="display: flex; justify-content: end; padding: 20px 0px 20px 0px">
+                        <p style="padding-bottom: 1.2em;">
+                            <em style="padding-left:30px;font-size: 0.8em">
+                                {{.Cliente.Telefone1}}</em>
+                            <em style="padding-left:30px;font-size: 0.8em">
+                                {{.Cliente.Telefone2}}
+                            </em>
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-top: 1px dashed; margin-bottom: 2em">
+            </div>
+            <p style="page-break-after: always">&nbsp;</p>
+            <script>
+                document.getElementById("valorExtenso{{.ID}}").innerHTML = extenso("{{.ValorAluguel}}", {mode: 'currency'})
+                // Get the element
+                var elem = document.getElementById('recibo{{.ID}}');
+
+                // Create a copy of it
+                var clone = elem.cloneNode(true);
+                var separador = ""
+
+                // Inject it into the DOM
+                elem.after(clone);
+
+            </script>
+        {{ end }}
+        <script>
+            const collection = document.getElementsByClassName("dataPagamento");
+
+            for (let i = 0; i < collection.length; i++) {
+                collection[i].innerHTML = "{{.data.Mes}} de {{.data.Ano}}"
+            }
+        </script>
+        </body>
+    </div>
+{{ end }}

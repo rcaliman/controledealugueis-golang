@@ -1,0 +1,54 @@
+{{ define "views/form_imovel.html" }}
+    {{ template "layouts/header.html" }}
+    <body>
+    <div class="container mt-2">
+        {{ template "layouts/navegacao.html" }}
+        <form class="form-floating" method="post" action="imoveis" id="form_imovel">
+            <div class="row right" style="background-color: var(--paleta7);">
+                <h4 style="color: var(--cinza)">Formulário de Imóveis</h4>
+            </div>
+            <input class="form-control" type="hidden" name="id" value="{{ .imovel.ID }}">
+            <div class="row">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <input class="form-control" id="tipo" type="text" name="tipo" value="{{ .imovel.Tipo }}">
+            </div>
+            <div class="row">
+                <label for="numero" class="form-label">Número:</label>
+                <input class="form-control" id="numero" type="text" name="numero" value="{{ .imovel.Numero }}">
+            </div>
+            <div class="row">
+                <label for="local" class="form-label">Local:</label>
+                <input class="form-control" id="local" type="text" name="local" value="{{ .imovel.Local }}">
+            </div>
+            <div class="row">
+                <label for="cliente_id" class="form-label">Cliente:</label>
+                <select class="form-control" id="cliente_id" type="text" name="cliente_id">
+                    <option value="{{ .imovel.Cliente.ID }}">{{ .imovel.Cliente.Nome}}</option>
+                    {{ range .clientes }}
+                        <option value="{{ .ID }}">{{ .Nome }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="row">
+                <label for="valor_aluguel" class="form-label">Valor do Aluguel:</label>
+                <input class="form-control" id="valor_aluguel" type="text" name="valor_aluguel"
+                       value="{{ .imovel.ValorAluguel }}">
+            </div>
+            <div class="row">
+                <label for="observacao" class="form-label">Observação:</label>
+                <input class="form-control" id="observacao" type="text" name="observacao"
+                       value="{{ .imovel.Observacao }}">
+            </div>
+            <div class="row">
+                <label for="dia_base" class="form-label">Dia Base:</label>
+                <input class="form-control" id="dia_base" type="text" name="dia_base"
+                       value="{{ .imovel.DiaBase}}">
+            </div>
+            <div class="row right" style="background-color: var(--cinza)">
+                <button class="btn btn-formulario" type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+    </body>
+    {{ template "layouts/footer.html" }}
+{{ end }}

@@ -1,0 +1,43 @@
+{{ define "views/clientes.html" }}
+
+    {{ template "layouts/header.html" }}
+    <body>
+    <div class="container mt-2">
+        {{ template "layouts/navegacao.html" }}
+        <div class="row">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Data de Nascimento</th>
+                    <th class="text-center">CI</th>
+                    <th class="text-center">CPF</th>
+                    <th class="text-center">Telefone 1</th>
+                    <th class="text-center">Telefone 2</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Apagar</th>
+                </tr>
+                </thead>
+                {{ range .clientes}}
+                    <tr>
+                        <td>{{ .Nome }}</td>
+                        <td class="text-center">{{ .DataNascimento | formataDataBR }}</td>
+                        <td>{{ .CI }}</td>
+                        <td>{{ .CPF }}</td>
+                        <td>{{ .Telefone1 }}</td>
+                        <td>{{ .Telefone2 }}</td>
+                        <td><a class="btn btn-outline-secondary" href="/form_cliente?editar={{ .ID }}">Editar</a></td>
+                        <td><a class="btn btn-outline-secondary" href="/clientes?apagar={{ .ID }}">Apagar</a></td>
+                    </tr>
+                {{ end }}
+                <tr style="border: 1px solid #dee2e6; background-color: #dee2e6">
+                    <td colspan="8" style="text-align: center;">
+                        <a href="form_cliente" class="btn btn-outline-dark">Adicionar novo Cliente</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </body>
+    {{ template "layouts/footer.html" }}
+
+{{ end}}

@@ -1,0 +1,51 @@
+{{ define "views/imoveis.html"}}
+    {{ template "layouts/header.html" }}
+    <body>
+    <div class="container mt-2">
+        {{ template "layouts/navegacao.html" }}
+        <form action="/recibos" method="post" class="tabela">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Número</th>
+                        <th class="text-center">Local</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Valor do Aluguel</th>
+                        <th class="text-center">Observações</th>
+                        <th class="text-center">Dia Base</th>
+                        <th class="text-center">Recibo</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Apagar</th>
+                    </tr>
+                    </thead>
+                    {{ range .imoveis}}
+                        <tr>
+                            <td>{{ .Tipo }}</td>
+                            <td class="text-right">{{ .Numero }}</td>
+                            <td>{{ .Local }}</td>
+                            <td>{{ .Cliente.Nome }}</td>
+                            <td class="text-right">{{ .ValorAluguel | formataFloat }}</td>
+                            <td>{{ .Observacao }}</td>
+                            <td class="text-right">{{ .DiaBase }}</td>
+                            <td class="text-center"><input type="checkbox" name="imprimir" value={{ .ID }}></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary"
+                                                       href="/form_imovel?editar={{ .ID }}">Editar</a></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary"
+                                                       href="/imoveis?apagar={{ .ID }}">Apagar</a></td>
+                        </tr>
+                    {{ end }}
+                    <tr style="border: 1px solid var(--cinza); background-color: var(--cinza)">
+                        <td colspan="10" style="text-align: center;">
+                            <a href="form_imovel" class="btn btn-outline-dark">Adicionar novo Imóvel</a></td>
+                    </tr>
+                </table>
+
+            </div>
+            {{ template "layouts/botoesimoveis.html"}}
+        </form>
+    </div>
+    </body>
+    {{ template "layouts/footer.html" }}
+{{ end }}

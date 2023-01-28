@@ -1,0 +1,14 @@
+{{ define "layouts/botoesimoveis.html"}}
+    <div class="row d-flex justify-content-end bd-highlight">
+        <span id="comboMeses"></span>
+        <span id="comboAnos"></span>
+        <button
+                class="btn btn-danger btn-navegate"
+                style="color: var(--branco); background-color: var(--botao1)">Gerar recibos
+        </button>
+    </div>
+    <script>
+        exibeComboMeses()
+        exibeComboAnos()
+    </script>
+{{ end }}
